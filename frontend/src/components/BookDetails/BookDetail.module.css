@@ -1,0 +1,188 @@
+
+.bookdetail {
+    display: flex;
+    flex-direction: column;
+    margin-left: 200px; 
+    padding: 3rem 5%;
+  }
+  .bookinfo {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+  
+  .bookinfo img {
+    width: 250px;
+    height: 350px;
+    margin-right: 2rem;
+    border-radius: 3%;
+  }
+  
+  .bookdata {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .bookdetailbutton{
+    display: flex;
+  }
+  .bookbuttonbuy {
+    background-color: #008CBA;
+    border-radius: 50px;
+    border-width: 0;
+    box-shadow: rgba(25, 25, 25, 0.04) 0 0 1px 0, rgba(0, 0, 0, 0.1) 0 3px 4px 0;
+    color:white;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Arial, sans-serif;
+    font-size: 1em;
+    height: 50px;
+    padding: 0 25px;
+    transition: all 200ms;
+    margin-top: 5px;
+  }
+  
+  
+  .buttonlike {
+    display: flex;
+    align-items: center;
+    border: 2px solid #8a8a8a;
+    background-color: transparent;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-size: 1em;
+    height: 50px;
+    padding: 0 25px;
+    transition: all 200ms;
+    border-radius: 3rem;
+    color: #8a8a8a;
+    cursor: pointer;
+    margin: 5px 5px;
+  }
+  
+  
+  .buttonlike span {
+    margin-left: 0.5rem;
+  }
+  
+  .buttonlike .fa,
+  .buttonlike span {
+    transition: all ease 0.4s;
+  }
+  
+  .buttonlike:hover {
+    border-color: #cc4b37;
+    color: #cc4b37;
+  }
+  
+  .likecheckbox {
+    display: none;
+  }
+  
+  .likecheckbox:checked + .fa,
+  .likecheckbox:checked + span {
+    color: #ffffff;
+  }
+  
+  .likecheckbox:checked + .fa {
+    color: #ffffff;
+  }
+  
+  .likecheckbox:checked + span {
+    color: #ffffff;
+    
+  }
+  
+  .likecheckbox:checked ~ .buttonlike {
+    background-color: #cc4b37;
+    border-color: #cc4b37;
+  }
+  
+  .likecheckbox:checked ~ .buttonlike .fa,
+  .likecheckbox:checked ~ .buttonlike span {
+    color: #ffffff;
+  
+  }
+  
+  
+  .starrating {
+    display: flex;
+    align-items: center;
+  }
+  
+  .starrating input {
+    display: none;
+  }
+  
+  .starrating label {
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #010101;
+    transition: color 0.2s;
+  }
+  
+  .starrating input:checked ~ label,
+  .starrating input:hover ~ label,
+  .starrating label:hover ~ label {
+    color: #ffca28;
+  }
+  
+  .spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #9b872d;
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    animation: spin 1s linear infinite;
+    margin-top: 10px;
+  }
+  
+  @keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+  }
+  
+  .bookdescription {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .siteName{
+    font-size: 1.5rem;
+    color: #010101;
+  }
+  
+  .container{
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    margin-left: 200px;
+    padding: 3rem 5%;
+  }
+  
+  
+  
+  @media (max-width: 768px) {
+    .bookdetail  {
+      margin-top: 100px;
+      margin-left: 0; 
+      padding: 3rem 5%;
+    }
+    .bookinfo{
+      display: flex;
+      flex-direction: column;
+    }
+    .bookinfo img {
+      width: 200px;
+      height: 200px;
+      border-radius: 3%;
+    }
+    .container{
+      margin-left: 90px;
+      padding: 0px;
+  
+    }
+  }
