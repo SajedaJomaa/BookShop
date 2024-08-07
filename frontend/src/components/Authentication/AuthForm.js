@@ -20,14 +20,27 @@ function AuthForm() {
       </div>
       <Form method="post" className={classes.forAuth}>
         <h1>LogIn</h1>
-        {data && data.errors && (
+
+
+        {data && data.errors ? (
+
+          <ul>
+            {Object.values(data.errors).map((err) => (
+              <li key={err}>{err}</li>
+            ))}
+          </ul>
+        ) : data && data.message ? (
+          <p>{data.message}</p>
+
+        ) : null}
+        {/* {data && data.errors && (
           <ul>
             {Object.values(data.errors).map((err) => (
               <li key={err}>{err}</li>
             ))}
           </ul>
         )}
-        {data && data.message && <p>{data.message}</p>}
+        {data && data.message && <p>{data.message}</p>} */}
         <div className={classes.controlrow}>
           <div className={classes.control}>
             <Input

@@ -34,7 +34,7 @@ export default function BookDetail({ book }) {
 
     const { volumeInfo } = book;
     const { title, description, authors, pageCount, imageLinks } = volumeInfo;
-
+    const autheName = authors ? authors.join(', ') : 'Unknown'
     return (
         <>
             <div className={classes.container}>
@@ -48,7 +48,7 @@ export default function BookDetail({ book }) {
                     )}
                     <div className={classes.bookdata}>
                         <h1>{title}</h1>
-                        <p>Author: {authors ? authors.join(', ') : 'Unknown'}</p>
+                        <p>Author: {autheName}</p>
                         <p>Page Count: {pageCount}</p>
 
                         <p>Rate this book:</p>

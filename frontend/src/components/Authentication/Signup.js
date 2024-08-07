@@ -2,12 +2,14 @@
 import { Form, useNavigation, useActionData } from 'react-router-dom';
 import { useInput } from '../../hooks/useInput.js';
 import { isEmail, isNotEmpty, hasMinLength } from '../../services/validation.js';
-
+import { useState } from 'react';
 import Input from '../Common/Input.js';
 import classes from './signup.module.css';
 
 export default function Signup() {
     const data = useActionData();
+    const [passwordsAreNotEqual, setPasswordsAreNotEqual]
+        = useState(false);
     const navigation = useNavigation();
 
     const isSubmitting = navigation.state === 'submitting';
@@ -34,6 +36,11 @@ export default function Signup() {
         handleInputChange: handlePasswordChange,
         hasError: passwordHasError
     } = useInput('', (value) => hasMinLength(value, 6));
+
+    if (data.password !== data['confirm-password']) {
+        setPasswordsAreNotEqual(true);
+        return;
+    }
 
 
     return (
@@ -88,6 +95,7 @@ export default function Signup() {
                             type="password"
                             name="confirm-password"
                         />
+                        <div className='control-error'>{passwordsAreNotEqual && <p>Passwords must match.</p>}</div>
                     </div>
                 </div>
 

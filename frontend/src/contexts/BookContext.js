@@ -9,7 +9,12 @@ export const BookProvider = ({ children }) => {
     });
 
     useEffect(() => {
-        localStorage.setItem('purchasedBooks', JSON.stringify(purchasedBooks));
+
+        try {
+            localStorage.setItem('purchasedBooks', JSON.stringify(purchasedBooks));
+        } catch (error) {
+            console.error('Error saving to localStorage:', error);
+        }
     }, [purchasedBooks]);
 
     const buyBook = (book) => {

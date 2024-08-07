@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchSelectedBook } from '../../services/api-call.js';
 import BookDetail from './BookDetail.js';
@@ -6,21 +6,29 @@ import BookDetail from './BookDetail.js';
 export default function FetchBookDetail() {
     const { id } = useParams();
     const [book, setBook] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-    useEffect(() => {
-        const fetchBookDetails = async () => {
-            try {
-                const data = await fetchSelectedBook(id);
-                setBook(data);
-            } catch (error) {
-                console.error('Error fetching book details:', error);
-            }
-        };
-
-        fetchBookDetails();
+    const fetchBookDetails = useCallback(async () => {
+        setLoading(true);
+        setError(null);
+        try {
+            const data = await fetchSelectedBook(id);
+            setBook(data);
+        } catch (error) {
+            setError('Error fetching book details. Please try again.');
+        } finally {
+            setLoading(false);
+        }
     }, [id]);
 
-    if (!book) return <div>Loading...</div>;
+    useEffect(() => {
+        fetchBookDetails();
+    }, [fetchBookDetails]);
+
+    if (loading) return <div>Loading...</div>;
+    if (error) return <div>{error}</div>;
 
     return <BookDetail book={book} />;
 }
+

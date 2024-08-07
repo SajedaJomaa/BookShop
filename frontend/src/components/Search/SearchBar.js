@@ -4,7 +4,11 @@ import classes from './Search.module.css';
 
 export default function SearchBar({ query, onInputChange, onSearch }) {
 
-
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            onSearch();
+        }
+    };
 
     return (
         <div className={classes.searchbox}>
@@ -17,7 +21,7 @@ export default function SearchBar({ query, onInputChange, onSearch }) {
                 placeholder="Type to Search..."
                 value={query}
                 onChange={onInputChange}
-                onKeyPress={(e) => e.key === 'Enter' && onSearch()}
+                onKeyPress={handleKeyPress}
             />
         </div>
     );

@@ -19,7 +19,12 @@ export default function Purchased() {
                             return (
                                 <li key={index}>
                                     <button className={classes.purchdata}>
-                                        <img src={book.volumeInfo.imageLinks?.thumbnail} alt={book.volumeInfo.title} className={classes.bookimage} />
+                                        {/* <img src={book.volumeInfo.imageLinks?.thumbnail} alt={book.volumeInfo.title} className={classes.bookimage} /> */}
+                                        <img
+                                            src={book.volumeInfo?.imageLinks?.thumbnail || 'default-thumbnail.jpg'}
+                                            alt={book.volumeInfo?.title || 'No Title'}
+                                            className={classes.bookimage}
+                                        />
                                         <p>{book.volumeInfo.title}</p>
                                     </button>
                                 </li>
